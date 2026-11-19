@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d19">
+  <title>Pro AI Video Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#">
+    <span class="logo">P</span>
+    <span>PRO<span class="blue">AI</span> STUDIO</span>
+  </a>
+  <span class="status"><i></i> AI STUDIO</span>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="eyebrow">CREATIVE AI WORKSPACE</span>
+    <h1>Imagine it.<br><span>Generate it.</span></h1>
+    <p>Transform your ideas and images into stunning AI videos.</p>
+  </section>
+
+  <section class="workspace">
+    <div class="section-heading">
+      <div>
+        <h2>Create a video</h2>
+        <p>Choose your generation method</p>
+      </div>
+      <span class="version">PRO 1.0</span>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-mode="text">✦ Text to Video</button>
+      <button class="tab" data-mode="image">▧ Image to Video</button>
+    </div>
+
+    <form id="generatorForm">
+
+      <div class="field">
+        <label for="prompt">YOUR VIDEO PROMPT</label>
+        <textarea id="prompt" maxlength="2000"
+          placeholder="Describe the video you want to create... Example: A cinematic drone shot flying over beautiful mountains at sunset, realistic lighting, smooth camera movement."
+          required></textarea>
+        <div class="field-bottom">
+          <span>Be detailed for better results</span>
+          <span id="charCount">0 / 2000</span>
+        </div>
+      </div>
+
+      <div class="field" id="imageField" hidden>
+        <label>UPLOAD YOUR IMAGE</label>
+        <label class="upload-box" for="imageInput">
+          <span class="upload-icon">＋</span>
+          <strong>Choose an image</strong>
+          <small>JPG, PNG or WEBP · Maximum 6 MB</small>
+          <img id="imagePreview" alt="Image preview" hidden>
+        </label>
+        <input type="file" id="imageInput"
+          accept="image/jpeg,image/png,image/webp" hidden>
+      </div>
+
+      <div class="settings">
+        <div class="field">
+          <label for="ratio">ASPECT RATIO</label>
+          <select id="ratio">
+            <option value="16:9">16:9 Landscape</option>
+            <option value="9:16">9:16 Portrait</option>
+            <option value="1:1">1:1 Square</option>
+            <option value="4:3">4:3 Standard</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="duration">DURATION</label>
+          <select id="duration">
+            <option value="5">5 Seconds</option>
+            <option value="8">8 Seconds</option>
+            <option value="10">10 Seconds</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label for="resolution">VIDEO RESOLUTION</label>
+          <select id="resolution">
+            <option value="768P">768P - Standard</option>
+            <option value="1080P">1080P - High quality</option>
+            <option value="480P">480P - Lower cost</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="cost-note">
+        <span>ⓘ</span>
+        Video generation uses paid AI credits. Check the price before generating.
+      </div>
+
+      <button type="submit" id="generateBtn" class="generate-btn">
+        ✦ Generate AI Video
+      </button>
+    </form>
+  </section>
+
+  <section class="result-section">
+    <div class="section-heading">
+      <div>
+        <h2>Your creation</h2>
+        <p>Generated video preview</p>
+      </div>
+    </div>
+
+    <div class="video-box" id="videoBox">
+      <div id="emptyState">
+        <div class="play-icon">▶</div>
+        <h3>Your video appears here</h3>
+        <p>Write a prompt and start creating.</p>
+      </div>
+      <video id="videoPlayer" controls playsinline hidden></video>
+    </div>
+
+    <div id="resultActions" hidden>
+      <a id="downloadBtn" class="download-btn" download="pro-ai-video.mp4">
+        ↓ Download video
+      </a>
+    </div>
+
+    <div class="progress-area" id="progressArea" hidden>
+      <div class="spinner"></div>
+      <strong id="progressText">Creating your video...</strong>
+      <p>AI generation may take several minutes.</p>
+    </div>
+  </section>
+
+  <section class="history-section">
+    <h2>Recent creations</h2>
+    <div id="historyList" class="history-list">
+      <p class="muted">Your generated videos will appear here.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>PRO AI STUDIO · Creative technology</p>
+  <small>AI-generated content may require human review.</small>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
